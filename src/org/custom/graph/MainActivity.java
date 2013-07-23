@@ -43,7 +43,6 @@ public class MainActivity extends Activity {
 
 			try {
 
-				Log.d("WOW", "Runnable called!");
 				PointManager pManager = new PointManager(MainActivity.this,
 						lineGraph.getXMax(), lineGraph.getYMax());
 				points = pManager.getPoints();
