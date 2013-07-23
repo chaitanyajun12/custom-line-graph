@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res/org.custom.graph"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <org.custom.graph.line.LineGraph
+        android:id="@+id/lineGraph"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:paddingLeft="10dp"
+        custom:label_color="#ff0000"
+        custom:x_label="runs"
+        custom:x_max="100"
+        custom:x_unit_spacing="10"
+        custom:y_max="400"
+        custom:y_unit_spacing="10" />
+
+</RelativeLayout>

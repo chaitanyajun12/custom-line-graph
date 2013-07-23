@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LineGraph">
+        <attr name="x_max" format="integer" />
+        <attr name="y_max" format="integer" />
+        <attr name="x_unit_spacing" format="integer" />
+        <attr name="y_unit_spacing" format="integer" />
+        <attr name="axis_color" format="color" />
+        <attr name="point_color" format="color" />
+        <attr name="line_color" format="color" />
+        <attr name="label_color" format="color" />
+        <attr name="axis_point_color" format="color" />
+        <attr name="x_label" format="string" />
+        <attr name="y_label" format="string" />
+    </declare-styleable>
+
+</resources>
