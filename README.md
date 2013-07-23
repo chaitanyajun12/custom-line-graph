@@ -6,8 +6,7 @@ This is an example which creates a custom line graph. The coordinates are retrie
 There are custom attributes provided for the custom line graph.
   - The attributes `x_max` and `y_max` are mandatory, which denote the length of x-axis and y-axis. Otherwise, `GraphExcep
     tion` will be raised. 
-  - Other attributes are not mandatory, but it would be good if we can provide stuff like `x_unit_spacing` and `y_unit_spa 
-    cing`. All custom attributes can be found at `res/values/attrs.xml`
+  - Other attributes are not mandatory, but it would be good if we can provide stuff like `x_unit_spacing` and `y_unit_spacing`. All custom attributes can be found at `res/values/attrs.xml`
   - By default, all sides padding for the graph is zero.
   - The project shows an activity which retrieves all the points using `PointManager` and then passes them to the 
     `LineGraph`.
