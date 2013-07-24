@@ -4,7 +4,7 @@ Custom Line Graph
 This is an example which creates a custom line graph. The coordinates are retrieved from a text file in the assets folder.
  
 There are custom attributes provided for the custom line graph.
-  - The attributes `x_max` and `y_max` are mandatory, which denote the length of x-axis and y-axis. Otherwise, `GraphException` will be raised. 
+  - The attributes `x_max` and `y_max` are mandatory, which denote the length of x-axis and y-axis. Otherwise, `GraphException` will be thrown. 
   - Other attributes are not mandatory, but it would be good if we can provide stuff like `x_unit_spacing` and `y_unit_spacing`. All custom attributes can be found at `res/values/attrs.xml`
   - By default, all sides padding for the graph is zero.
   - The project shows an activity which retrieves all the points using `PointManager` and then passes them to the 
@@ -32,3 +32,9 @@ Creating a custom line graph using Android XML.
         custom:y_unit_spacing="10" />
 ```
 
+Yet to come
+-----------
+
+1. Dynamic creation of Custom Line Graph.
+2. Providing more options for customization.
+3. Asynchronous loading of points within the graph.
