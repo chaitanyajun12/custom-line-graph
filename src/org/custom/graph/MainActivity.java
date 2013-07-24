@@ -7,12 +7,15 @@ import org.custom.graph.line.LineGraph;
 import org.custom.graph.line.Point;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
-	private LineGraph lineGraph;
-	private ArrayList<Point> points;
+	private LineGraph lineGraph1, lineGraph2;
+	private LinearLayout layout;
+	private ArrayList<Point> points1, points2;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -20,18 +23,30 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		lineGraph = (LineGraph) findViewById(R.id.lineGraph);
-
+		lineGraph1 = (LineGraph) findViewById(R.id.lineGraph);
+		layout = (LinearLayout) findViewById(R.id.layout);
+		
+		lineGraph2 = new LineGraph(this);
+		lineGraph2.setXMax(300);
+		lineGraph2.setYMax(100);
+		lineGraph2.setXunitSpacing(10);
+		lineGraph2.setYunitSpacing(10);
+		lineGraph2.setLineColor(Color.RED);
+		
+		layout.addView(lineGraph2);
+		
 		if (savedInstanceState != null) {
 
-			points = (ArrayList<Point>) savedInstanceState
-					.getSerializable("points");
-			lineGraph.setPoints(points);
+			points1 = (ArrayList<Point>) savedInstanceState.getSerializable("points1");
+			points2 = (ArrayList<Point>) savedInstanceState.getSerializable("points2");
+			lineGraph1.setPoints(points1);
+			lineGraph2.setPoints(points2);
 
 		} else {
 
 			Thread pointThread = new Thread(renderer);
 			pointThread.start();
+			
 		}
 	}
 
@@ -42,16 +57,19 @@ public class MainActivity extends Activity {
 
 			try {
 
-				PointManager pManager = new PointManager(MainActivity.this,
-						lineGraph.getXMax(), lineGraph.getYMax());
-				points = pManager.getPoints();
+				PointManager pManager = new PointManager(MainActivity.this, lineGraph1.getXMax(), lineGraph1.getYMax());
+				points1 = pManager.getPoints();
 
+				pManager = new PointManager(MainActivity.this, lineGraph2.getXMax(), lineGraph2.getYMax());
+				points2 = pManager.getPoints();
+				
 				runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
 
-						lineGraph.setPoints(points);
+						lineGraph1.setPoints(points1);
+						lineGraph2.setPoints(points2);
 					}
 				});
 
@@ -62,8 +80,10 @@ public class MainActivity extends Activity {
 	};
 
 	protected void onSaveInstanceState(Bundle outState) {
+		
 		super.onSaveInstanceState(outState);
-		outState.putSerializable("points", points);
+		outState.putSerializable("points1", points1);
+		outState.putSerializable("points2", points2);
 	}
 
 }

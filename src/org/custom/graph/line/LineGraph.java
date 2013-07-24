@@ -36,8 +36,8 @@ public class LineGraph extends View {
 	private int lineColor;
 	private int labelColor;
 	private int axisPointColor;
-	private String xLabel = "";
-	private String yLabel = "";
+	private String xLabel;
+	private String yLabel;
 	
 	private Paint paint;
 	private ArrayList<Point> points;
@@ -46,6 +46,7 @@ public class LineGraph extends View {
 		
 		super(context);
 		paint = new Paint();
+		setDefaults();
 	}
 
 	public LineGraph(Context context, AttributeSet attrs) throws GraphException {
@@ -77,6 +78,7 @@ public class LineGraph extends View {
 		if(getXMax() == Defaults.X_MAX || getYMax() == Defaults.Y_MAX)
 			throw new GraphException("Error: Compulsory axis size attribute missing!");
 		
+		a.recycle();
 	}
 
 	@Override
@@ -86,11 +88,11 @@ public class LineGraph extends View {
 		paint.setColor(axisColor);
 		paint.setStrokeWidth(2);
 
-		float originX = getPaddingLeft();
+		float originX = getPaddingLeft() + Defaults.AXIS_POINTER_SIZE;
 		float originY = getPaddingTop() + graphHeightPx;
 		
-		canvas.drawLine(getPaddingLeft(), getPaddingTop(), getPaddingLeft(), getPaddingTop() + graphHeightPx, paint);
-		canvas.drawLine(getPaddingLeft(), getPaddingTop() + graphHeightPx, getPaddingLeft() + graphWidthPx, getPaddingTop() + graphHeightPx, paint);
+		canvas.drawLine(getPaddingLeft() + Defaults.AXIS_POINTER_SIZE, getPaddingTop(), getPaddingLeft() + Defaults.AXIS_POINTER_SIZE, getPaddingTop() + graphHeightPx, paint);
+		canvas.drawLine(getPaddingLeft() + Defaults.AXIS_POINTER_SIZE, getPaddingTop() + graphHeightPx, getPaddingLeft() + graphWidthPx + Defaults.AXIS_POINTER_SIZE, getPaddingTop() + graphHeightPx, paint);
 		
 		for(int i=0; points != null && i<points.size(); i++) {
 			
@@ -107,9 +109,7 @@ public class LineGraph extends View {
 			canvas.drawPoint(x1, y1, paint);
 			canvas.drawPoint(x2, y2, paint);
 			
-//			Log.e("WOW", "x1: "+x1+", y1: "+y1+", x2: "+x2+", y2: "+y2);
-			
-			paint.setColor(labelColor);
+			paint.setColor(lineColor);
 			canvas.drawLine(x1, y1, x2, y2, paint);
 		}
 		
@@ -135,7 +135,7 @@ public class LineGraph extends View {
 		setLayoutWidth(w);
 		setLayoutHeight(h);
 		
-		graphWidthPx = getLayoutWidth() - getPaddingLeft() - getPaddingRight();
+		graphWidthPx = getLayoutWidth() - getPaddingLeft() - getPaddingRight() - Defaults.AXIS_POINTER_SIZE;
 		graphHeightPx = getLayoutHeight() - getPaddingTop() - getPaddingBottom() - Defaults.AXIS_POINTER_SIZE;
 		
 		xRatio = graphWidthPx/getXMax();
@@ -143,7 +143,25 @@ public class LineGraph extends View {
 		
 		xSpacingPx = xRatio * getXunitSpacing();
 		ySpacingPx = yRatio * getYunitSpacing();
+
+	}
+	
+	private void setDefaults() {
 		
+		xMax = Defaults.X_MAX;
+		yMax = Defaults.Y_MAX;
+		xUnitSpacing = Defaults.X_UNIT_SPACING;
+		yUnitSpacing = Defaults.Y_UNIT_SPACING;
+		
+		axisColor = Defaults.AXIS_COLOR;
+		pointColor = Defaults.POINT_COLOR;
+		labelColor = Defaults.LABEL_COLOR;
+		lineColor = Defaults.LINE_COLOR;
+		axisPointColor = Defaults.AXIS_POINT_COLOR;
+		
+		xLabel = Defaults.X_LABEL;
+		yLabel = Defaults.Y_LABEL;
+
 	}
 
 	public int getAxisColor() {
@@ -244,6 +262,10 @@ public class LineGraph extends View {
 
 	public void setPoints(ArrayList<Point> points) {
 		this.points = points;
+		reDraw();
+	}
+	
+	public void reDraw() {
 		this.invalidate();
 		requestLayout();
 	}
@@ -252,7 +274,6 @@ public class LineGraph extends View {
 		
 		if(points == null)
 			points = new ArrayList<Point>();
-		
 		points.add(point);
 	}
 

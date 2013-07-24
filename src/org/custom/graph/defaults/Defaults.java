@@ -15,5 +15,7 @@ public class Defaults {
 	public static final int LABEL_COLOR = Color.BLACK;
 	public static final int AXIS_POINT_COLOR = Color.BLACK;
 	public static final int AXIS_POINTER_SIZE = 5; // px
-		
+	public static final String X_LABEL = "";
+	public static final String Y_LABEL = "";
+
 }

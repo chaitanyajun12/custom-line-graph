@@ -9,12 +9,18 @@
         android:id="@+id/lineGraph"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:paddingLeft="10dp"
         custom:label_color="#ff0000"
-        custom:x_label="runs"
-        custom:x_max="100"
+        custom:line_color="#ff0000"
+        custom:x_max="300"
         custom:x_unit_spacing="10"
-        custom:y_max="400"
+        custom:y_max="100"
         custom:y_unit_spacing="10" />
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lineGraph" >
+    </LinearLayout>
 
 </RelativeLayout>
