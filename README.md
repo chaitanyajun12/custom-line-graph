@@ -9,13 +9,15 @@ There are custom attributes provided for the custom line graph.
   - By default, all sides padding for the graph is zero.
   - The project shows an activity which retrieves all the points using `PointManager` and then passes them to the 
     `LineGraph`.
-  - Graph can be created through XML only right now.
+  - Graph can be created both dynamically and using Android XML.
   - Problems due to screen rotations is also handled.
 
 Example
 -------
 
-Creating a custom line graph using Android XML.
+Creating a custom line graph,
+
+1. Using Android XML,
 
 ```
       <org.custom.graph.line.LineGraph
@@ -32,9 +34,22 @@ Creating a custom line graph using Android XML.
         custom:y_unit_spacing="10" />
 ```
 
+2. Dynamically,
+
+```
+      LineGraph lineGraph = new LineGraph(this);
+      lineGraph.setXMax(300);
+      lineGraph.setYMax(100);
+      lineGraph.setXUnitSpacing(10);
+      lineGraph.setYUnitSpacing(10);
+      lineGraph2.setLineColor(Color.RED);
+      
+      layout.addView(lineGraph);
+```
+
 Yet to come
 -----------
 
-1. Dynamic creation of Custom Line Graph.
+1. <del>Dynamic creation of Custom Line Graph.</del> - **Done!**
 2. Providing more options for customization.
 3. Asynchronous loading of points within the graph.
