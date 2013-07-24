@@ -42,18 +42,11 @@ public class PointManager {
 			line = br.readLine();
 		}
 
-		Log.d("WOW", "No. of points: " + points.size());
 		Collections.sort(points);
 	}
 
 	public ArrayList<Point> getPoints() {
 		return points;
 	}
-
-/*	private void print() {
-
-		for (Point point : points) {
-			Log.d("WOW", "X: " + point.getX() + ", Y: " + point.getY());
-		}
-	} */
+	
 }
