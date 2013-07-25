@@ -53,3 +53,4 @@ Yet to come
 1. <del>Dynamic creation of Custom Line Graph.</del> - **Done!**
 2. Providing more options for customization.
 3. Asynchronous loading of points within the graph.
+4. Making this Custom Line Graph a standalone library.
