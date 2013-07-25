@@ -11,14 +11,15 @@
         android:layout_height="100dp"
         custom:label_color="#ff0000"
         custom:line_color="#ff0000"
-        custom:x_max="300"
+        custom:x_max="500"
         custom:x_unit_spacing="10"
-        custom:y_max="100"
+        custom:y_max="300"
         custom:y_unit_spacing="10" />
 
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="wrap_content"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lineGraph" >
     </LinearLayout>

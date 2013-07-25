@@ -27,8 +27,8 @@ public class MainActivity extends Activity {
 		layout = (LinearLayout) findViewById(R.id.layout);
 		
 		lineGraph2 = new LineGraph(this);
-		lineGraph2.setXMax(300);
-		lineGraph2.setYMax(100);
+		lineGraph2.setXMax(500);
+		lineGraph2.setYMax(300);
 		lineGraph2.setXunitSpacing(10);
 		lineGraph2.setYunitSpacing(10);
 		lineGraph2.setLineColor(Color.RED);
